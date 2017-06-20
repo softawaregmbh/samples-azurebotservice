@@ -67,9 +67,9 @@ public class EchoDialog : IDialog<object>
                 }
             };
 
-            message.Attachments.Add(card.ToAttachment());
+            responseMessage.Attachments.Add(card.ToAttachment());
 
-            await context.PostAsync(message);
+            await context.PostAsync(responseMessage);
             context.Wait(MessageReceivedAsync);
         }
     }
