@@ -50,7 +50,26 @@ public class EchoDialog : IDialog<object>
             
             await Task.Delay(3000);
             
-            await context.PostAsync($"{this.count++}: You said {message.Text}");
+            var responseMessage = context.MakeMessage();
+
+            var card = new HeroCard()
+            {
+                Title = "Cognitive Services",
+                Subtitle = "Roman Schacherl",
+                Text = $"In Raum {query.Room} findet ein Vortrag über Cognitive Services statt.",
+                Images = new List<CardImage>()
+                {
+                    new CardImage()
+                    {
+                        Url = "https://api-summit.de/wp-content/uploads/2017/03/API_Summit-3914.jpg",
+                        Tap = new CardAction(ActionTypes.OpenUrl, "Open", null, "https://www.api-summit.de")
+                    }
+                }
+            };
+
+            message.Attachments.Add(card.ToAttachment());
+
+            await context.PostAsync(message);
             context.Wait(MessageReceivedAsync);
         }
     }
