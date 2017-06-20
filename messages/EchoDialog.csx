@@ -56,13 +56,13 @@ public class EchoDialog : IDialog<object>
             {
                 Title = "Cognitive Services",
                 Subtitle = "Roman Schacherl",
-                Text = $"In Raum {query.Room} findet ein Vortrag über Cognitive Services statt.",
+                Text = $"In Kino findet ein Vortrag über Cognitive Services statt.",
                 Images = new List<CardImage>()
                 {
                     new CardImage()
                     {
                         Url = "https://api-summit.de/wp-content/uploads/2017/03/API_Summit-3914.jpg",
-                        Tap = new CardAction(ActionTypes.OpenUrl, "Open", null, "https://www.api-summit.de")
+                        Tap = new CardAction(Microsoft.Bot.Connector.ActionTypes.OpenUrl, "Open", null, "https://www.api-summit.de")
                     }
                 }
             };
